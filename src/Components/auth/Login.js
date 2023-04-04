@@ -8,8 +8,19 @@ import "./Login.css";
 import insta from '../../assets/insta.svg';
 import TextField from "@mui/material/TextField";
 import Alert from '@mui/material/Alert';
+import { makeStyles } from '@mui/styles';
 
 export default function Login() {
+
+  const useStyles = makeStyles({
+
+    text1:{
+      color: 'grey',
+      textAlign: 'center',
+    }
+  })
+
+  const classes = useStyles();
   return (
     <div className="card__wrapper">
       <div className="card__content">
@@ -18,7 +29,7 @@ export default function Login() {
             <img src={insta} alt="insta" className="logo" />
           </div>
           <CardContent>
-            <Typography variant="outlined" component="div">
+            <Typography variant="outlined" component="div" className= {classes.text1}>
               Sign Up to see photos & videos from your friends.
             </Typography>
             {true && (
