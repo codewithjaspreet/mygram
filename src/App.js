@@ -1,13 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import Login from './Components/auth/Login';
-
-function App() {
+import React from 'react'
+import Login from './Components/auth/Login'
+import './App.css'
+const App = () => {
   return (
-    <div className="App">
-        <Login/>
+    <div className='App'>
+
+    <Login  />
+
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
