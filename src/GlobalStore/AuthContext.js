@@ -10,7 +10,7 @@ export function AuthProvider({children}){
     const[loading,setLoading] = useState(true);
 
 
-    function signUp(email , password){
+    function signup(email , password){
 
         return auth.createUserWithEmailAndPassword(email , password);
     }
@@ -40,7 +40,7 @@ export function AuthProvider({children}){
     const store = [
 
         user,
-        signUp,
+        signup,
         login,
         logout,
     ]
