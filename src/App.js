@@ -7,10 +7,11 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path= "/" Component={SignUp}> </Route>
         <Route path="/login" Component={Login}></Route>
         <Route path="/signup" Component={SignUp}></Route>
       </Routes>
-      <Login />
+      
     </BrowserRouter>
   );
 }
