@@ -3,16 +3,39 @@ import { Link , useNavigate} from "react-router-dom";
 import {BiCloudUpload} from 'react-icons/bi';
 import { AuthContext } from "../../GlobalStore/AuthContext";
 
+
+
 const SignUp = () => {
 
-  const[username,setUsername] = useState("");
-  const[email,setEmail] = useState("");
-  const[password,setPassword] = useState("");
+  const[username,setUsername] = useState('');
+  const[email,setEmail] = useState('');
+  const[password,setPassword] = useState('');
   const [file , setFile] = useState(null);
-  const [loading , setLoading] = useState("");
+  const [loading , setLoading] = useState('');
   const history = useNavigate();
 
-  const {signUp} = useContext(AuthContext);
+
+
+  const {signup} = useContext(AuthContext);
+
+  const handleClick = async () => {
+
+
+       try{
+
+        let userObj = await signup(email, password);
+
+        let uid = userObj.user.uid;
+        console.log(uid);
+       }
+
+       catch(err){
+
+        console.log(err);
+
+
+       }
+  }
   return (
     <div class=" mx-auto mt-6 w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
       <form class="space-y-4" action="#">
@@ -37,6 +60,10 @@ const SignUp = () => {
             Your email
           </label>
           <input
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             type="email"
             name="email"
             id="email"
@@ -53,6 +80,10 @@ const SignUp = () => {
             Your password
           </label>
           <input
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
             type="password"
             name="password"
             id="password"
@@ -70,6 +101,10 @@ const SignUp = () => {
             Your Name
           </label>
           <input
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
             type="text"
             name="name"
             id="name"
@@ -83,20 +118,25 @@ const SignUp = () => {
         <label class="w-full flex gap-2  items-center justify-center px-4 py-2  bg-white text-blue rounded-lg   border border-blue cursor-pointer ">
           <BiCloudUpload />
           <span class="text-base font-medium">Upload profile Image</span>
-          <input type="file" class="hidden" />
+          <input type="file" class="hidden"
+          
+          onChange={(e) =>(
+            setFile(e.target.files[0])
+          )}
+          />
         </label>
         <button
           type="submit"
+          disabled={loading}
+          onClick ={handleClick}
           class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Share
+          Sign Up
         </button>
         <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
           Already have an account?{" "}
           <Link to="/login">
-            <a
-              class="text-blue-700 hover:underline dark:text-blue-500"
-            >
+            <a class="text-blue-700 hover:underline dark:text-blue-500">
               Login
             </a>
           </Link>
