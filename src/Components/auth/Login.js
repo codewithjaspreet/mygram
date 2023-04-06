@@ -3,9 +3,17 @@ import React from "react";
 import { BiCloudUpload } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import instaBanner from "../../assets/instabanner.png";
+import { useContext } from "react";
 
+import { AuthContext } from "../../GlobalStore/AuthContext";
 const Login = () => {
+
+
+  const store = useContext(AuthContext);
+
+  console.log(store);
   return (
+
     <div className="flex items-center p-12 flex-wrap mt-10">
       
 

@@ -1,8 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React , {useState,useContext} from "react";
+import { Link , useNavigate} from "react-router-dom";
 import {BiCloudUpload} from 'react-icons/bi';
+import { AuthContext } from "../../GlobalStore/AuthContext";
 
 const SignUp = () => {
+
+  const[username,setUsername] = useState("");
+  const[email,setEmail] = useState("");
+  const[password,setPassword] = useState("");
+  const [file , setFile] = useState(null);
+  const [loading , setLoading] = useState("");
+  const history = useNavigate();
+
+  const {signUp} = useContext(AuthContext);
   return (
     <div class=" mx-auto mt-6 w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
       <form class="space-y-4" action="#">
